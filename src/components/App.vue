@@ -1,9 +1,6 @@
 <template>
 	<main class="px-4 py-20">
-		<form
-			class="flex flex-col w-full max-w-md mx-auto space-y-4"
-			@submit.prevent
-		>
+		<form class="flex flex-col w-full max-w-md mx-auto space-y-4">
 			<div class="p-4 space-y-4 bg-white rounded-md shadow-md">
 				<h1 class="text-lg">Attacker Stats</h1>
 				<div class="grid grid-flow-col gap-4">
@@ -40,32 +37,30 @@
 				</div>
 			</div>
 
-			<button
-				type="submit"
-				class="px-3 py-2 text-white transition-colors duration-200 bg-orange-600 rounded-md shadow-md"
-			>
-				Simulate
-			</button>
-
-			<pre>{{ attacker }}</pre>
-			<pre>{{ defender }}</pre>
+			<div class="p-4 space-y-1 bg-white rounded-md shadow-md" v-if="result">
+				<p>
+					Attacker wins <b>{{ percent(result.attackerWinRate) }}</b> of the
+					time.
+				</p>
+				<p>
+					Defender wins <b>{{ percent(result.defenderWinRate) }}</b> of the
+					time.
+				</p>
+				<p>
+					Both survive <b>{{ percent(result.nobodyWinRate) }}</b> of the time.
+				</p>
+			</div>
 		</form>
 	</main>
 </template>
 
 <script>
+// @ts-check
 import StatInput from "./StatInput.vue"
 import Field from "./Field.vue"
-import { ref } from "vue"
-
-function createStatGroup() {
-	return {
-		hp: 0,
-		atk: 0,
-		def: 0,
-		evd: 0,
-	}
-}
+import { ref, watch, reactive, computed, watchEffect } from "vue"
+import { createStatGroup, getDefenseRoundResult } from "../battle"
+import { count } from "../helpers"
 
 export default {
 	components: {
@@ -73,9 +68,40 @@ export default {
 		Field,
 	},
 	setup() {
+		const attacker = reactive(createStatGroup())
+		const defender = reactive(createStatGroup())
+		const result = ref()
+
+		watchEffect(function simulate() {
+			let wins = []
+
+			for (let i = 0; i < 10000; i++) {
+				const round1 = getDefenseRoundResult(attacker, defender)
+				if (round1.defenderHealth <= 0) {
+					wins.push("attacker")
+				} else {
+					const round2 = getDefenseRoundResult(defender, attacker)
+					wins.push(round2.defenderHealth <= 0 ? "defender" : "nobody")
+				}
+			}
+
+			result.value = {
+				attackerWinRate: count(wins, "attacker") / wins.length,
+				defenderWinRate: count(wins, "defender") / wins.length,
+				nobodyWinRate: count(wins, "nobody") / wins.length,
+			}
+		})
+
+		/** @param {number} value */
+		function percent(value) {
+			return `${Math.round(value * 100)}%`
+		}
+
 		return {
-			attacker: ref(createStatGroup()),
-			defender: ref(createStatGroup()),
+			attacker,
+			defender,
+			result,
+			percent,
 		}
 	},
 }
