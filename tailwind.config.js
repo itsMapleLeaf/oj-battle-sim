@@ -6,7 +6,9 @@ module.exports = {
 		},
 		extend: {},
 	},
-	variants: {},
+	variants: {
+		borderColor: ["hover", "focus", "focus-within"],
+	},
 	plugins: [],
 	future: {
 		removeDeprecatedGapUtilities: true,
