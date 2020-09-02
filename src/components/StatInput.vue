@@ -14,23 +14,15 @@ import { selectAll } from "../helpers"
 export default {
 	props: {
 		label: String,
-		modelValue: [String, Number],
-		modelModifiers: {
-			default: () => ({ number: false }),
-		},
+		modelValue: Number,
 	},
 
 	setup(props, context) {
 		return {
 			selectAll,
+
 			handleInput(event) {
-				let value = event.target.value
-
-				if (props.modelModifiers.number) {
-					value = Number(value) || 0
-				}
-
-				context.emit("update:modelValue", value)
+				context.emit("update:modelValue", Number(event.target.value) || 0)
 			},
 		}
 	},
