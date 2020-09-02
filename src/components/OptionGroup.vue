@@ -14,7 +14,7 @@
 				:value="option.value"
 				@input="$emit('update:modelValue', $event.target.value)"
 			/>
-			{{ option.text }}
+			<span class="select-none">{{ option.text }}</span>
 		</label>
 	</div>
 </template>
