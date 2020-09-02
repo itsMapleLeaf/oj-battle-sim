@@ -1,16 +1,17 @@
 {
-  "name": "oj-battle-sim-vue",
-  "private": true,
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
-  "dependencies": {
-    "vue": "3.0.0-rc.9"
-  },
-  "devDependencies": {
-    "@vue/compiler-sfc": "3.0.0-rc.9",
-    "tailwindcss": "^1.7.6",
-    "vite": "1.0.0-rc.4"
-  }
+	"name": "oj-battle-sim-vue",
+	"private": true,
+	"scripts": {
+		"dev": "vite",
+		"build": "cross-env NODE_ENV=production vite build"
+	},
+	"dependencies": {
+		"vue": "3.0.0-rc.9"
+	},
+	"devDependencies": {
+		"@vue/compiler-sfc": "3.0.0-rc.9",
+		"cross-env": "^7.0.2",
+		"tailwindcss": "^1.7.6",
+		"vite": "1.0.0-rc.4"
+	}
 }
