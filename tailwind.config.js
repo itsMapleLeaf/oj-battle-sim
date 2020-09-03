@@ -1,5 +1,5 @@
 module.exports = {
-	purge: ["./{components,pages}/**.*.{ts,tsx}"],
+	purge: ["./{components,pages}/**/*.{ts,tsx}"],
 	theme: {
 		fontFamily: {
 			body: `Rubik, sans-serif`,
