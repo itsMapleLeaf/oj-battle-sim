@@ -1,5 +1,5 @@
 module.exports = {
-	purge: ["./src/**/*.vue", "./index.html"],
+	purge: ["./{components,pages}/**.*.{ts,tsx}"],
 	theme: {
 		fontFamily: {
 			body: `Rubik, sans-serif`,
