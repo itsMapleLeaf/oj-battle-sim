@@ -19,7 +19,7 @@ const initialValues = {
 	reaction: "defend" as Reaction,
 }
 
-const toFighter = (values: typeof initialValues) =>
+const toFighter = (values: typeof initialValues): Fighter =>
 	mapValues(omit(values, ["reaction"]), (value) => Number(value) || 0)
 
 export default function IndexPage() {
