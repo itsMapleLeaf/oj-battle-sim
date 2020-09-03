@@ -1,6 +1,6 @@
-import { randomInt } from "./helpers"
+import { randomInt } from "./common"
 
-type Fighter = {
+export type Fighter = {
 	readonly hp: number
 	readonly atk: number
 	readonly def: number
