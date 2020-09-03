@@ -13,24 +13,26 @@ import { count } from "../helpers/common"
 type Reaction = "defend" | "evade"
 
 export default function IndexPage() {
-	const attacker = useFormValues(createStatGroup())
-	const defender = useFormValues(createStatGroup())
+	const attacker = useFormValues({
+		...createStatGroup(),
+		reaction: "defend" as Reaction,
+	})
 
-	const [attackerReaction, setAttackerReaction] = useState<Reaction>("defend")
-	const [defenderReaction, setDefenderReaction] = useState<Reaction>("defend")
+	const defender = useFormValues({
+		...createStatGroup(),
+		reaction: "defend" as Reaction,
+	})
 
 	const result = getBattleResult(
 		attacker.values,
 		defender.values,
-		attackerReaction,
-		defenderReaction,
+		attacker.values.reaction,
+		defender.values.reaction,
 	)
 
 	function swap() {
 		attacker.set(defender.values)
 		defender.set(attacker.values)
-		setAttackerReaction(defenderReaction)
-		setDefenderReaction(attackerReaction)
 	}
 
 	return (
@@ -56,8 +58,8 @@ export default function IndexPage() {
 					<div className="self-start">
 						<OptionGroup<Reaction>
 							name="attackerReaction"
-							value={attackerReaction}
-							onChange={setAttackerReaction}
+							value={attacker.values.reaction}
+							onChange={(reaction) => attacker.merge({ reaction })}
 							options={[
 								{ value: "defend", text: "Defend" },
 								{ value: "evade", text: "Evade" },
@@ -102,8 +104,8 @@ export default function IndexPage() {
 					<div className="self-start">
 						<OptionGroup<Reaction>
 							name="defenderReaction"
-							value={defenderReaction}
-							onChange={setDefenderReaction}
+							value={defender.values.reaction}
+							onChange={(reaction) => defender.merge({ reaction })}
 							options={[
 								{ value: "defend", text: "Defend" },
 								{ value: "evade", text: "Evade" },
@@ -131,16 +133,20 @@ export default function IndexPage() {
 function useFormValues<T>(initialValues: T) {
 	const [values, setValues] = useState(initialValues)
 
+	function merge(partialValues: Partial<T>) {
+		setValues((prev) => ({ ...prev, ...partialValues }))
+	}
+
 	function bindNumber<K extends keyof T>(key: K) {
 		return {
 			value: String(values[key]),
 			onChange: (event: React.ChangeEvent<{ value: string }>) => {
-				setValues((v) => ({ ...v, [key]: Number(event.target.value) || 0 }))
+				merge({ [key]: Number(event.target.value) || 0 } as any)
 			},
 		}
 	}
 
-	return { values, set: setValues, bindNumber }
+	return { values, set: setValues, merge, bindNumber }
 }
 
 function getBattleResult(
