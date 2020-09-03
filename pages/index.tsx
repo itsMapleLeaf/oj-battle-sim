@@ -3,38 +3,42 @@ import Field from "../components/Field"
 import OptionGroup from "../components/OptionGroup"
 import StatInput from "../components/StatInput"
 import {
-	createStatGroup,
 	Fighter,
 	getDefenseRoundResult,
 	getEvadeRoundResult,
 } from "../helpers/battle"
-import { count } from "../helpers/common"
+import { count, mapValues, omit } from "../helpers/common"
 
 type Reaction = "defend" | "evade"
 
+const initialValues = {
+	hp: "5",
+	atk: "0",
+	def: "0",
+	evd: "0",
+	reaction: "defend" as Reaction,
+}
+
+const toFighter = (values: typeof initialValues) =>
+	mapValues(omit(values, ["reaction"]), (value) => Number(value) || 0)
+
 export default function IndexPage() {
-	const [attacker, setAttacker] = useState({
-		...createStatGroup(),
-		reaction: "defend" as Reaction,
-	})
+	const [attacker, setAttacker] = useState(initialValues)
 	const updateAttacker = usePartialSetState(setAttacker)
 
-	const [defender, setDefender] = useState({
-		...createStatGroup(),
-		reaction: "defend" as Reaction,
-	})
+	const [defender, setDefender] = useState(initialValues)
 	const updateDefender = usePartialSetState(setDefender)
 
 	const result = getBattleResult(
-		attacker,
-		defender,
+		toFighter(attacker),
+		toFighter(defender),
 		attacker.reaction,
 		defender.reaction,
 	)
 
 	function swap() {
 		setAttacker(defender)
-		setAttacker(attacker)
+		setDefender(attacker)
 	}
 
 	return (
@@ -45,26 +49,26 @@ export default function IndexPage() {
 					<div className="grid grid-flow-col gap-4">
 						<Field label="HP">
 							<StatInput
-								defaultValue={5}
-								onValueChange={(hp) => updateAttacker({ hp })}
+								value={attacker.hp}
+								onTextChange={(hp) => updateAttacker({ hp })}
 							/>
 						</Field>
 						<Field label="ATK">
 							<StatInput
-								defaultValue={0}
-								onValueChange={(atk) => updateAttacker({ atk })}
+								value={attacker.atk}
+								onTextChange={(atk) => updateAttacker({ atk })}
 							/>
 						</Field>
 						<Field label="DEF">
 							<StatInput
-								defaultValue={0}
-								onValueChange={(def) => updateAttacker({ def })}
+								value={attacker.def}
+								onTextChange={(def) => updateAttacker({ def })}
 							/>
 						</Field>
 						<Field label="EVD">
 							<StatInput
-								defaultValue={0}
-								onValueChange={(evd) => updateAttacker({ evd })}
+								value={attacker.evd}
+								onTextChange={(evd) => updateAttacker({ evd })}
 							/>
 						</Field>
 					</div>
@@ -103,26 +107,26 @@ export default function IndexPage() {
 					<div className="grid grid-flow-col gap-4">
 						<Field label="HP">
 							<StatInput
-								defaultValue={5}
-								onValueChange={(hp) => updateDefender({ hp })}
+								value={defender.hp}
+								onTextChange={(hp) => updateDefender({ hp })}
 							/>
 						</Field>
 						<Field label="ATK">
 							<StatInput
-								defaultValue={0}
-								onValueChange={(atk) => updateDefender({ atk })}
+								value={defender.atk}
+								onTextChange={(atk) => updateDefender({ atk })}
 							/>
 						</Field>
 						<Field label="DEF">
 							<StatInput
-								defaultValue={0}
-								onValueChange={(def) => updateDefender({ def })}
+								value={defender.def}
+								onTextChange={(def) => updateDefender({ def })}
 							/>
 						</Field>
 						<Field label="EVD">
 							<StatInput
-								defaultValue={0}
-								onValueChange={(evd) => updateDefender({ evd })}
+								value={defender.evd}
+								onTextChange={(evd) => updateDefender({ evd })}
 							/>
 						</Field>
 					</div>
@@ -170,8 +174,8 @@ function usePartialSetState<T>(
 function getBattleResult(
 	attacker: Fighter,
 	defender: Fighter,
-	attackerReaction: string,
-	defenderReaction: string,
+	attackerReaction: Reaction,
+	defenderReaction: Reaction,
 ) {
 	let wins: Array<"attacker" | "defender" | "nobody"> = []
 
