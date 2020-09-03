@@ -46,7 +46,8 @@ export default function IndexPage() {
 			<form className="flex flex-col w-full max-w-md mx-auto space-y-4">
 				<div className="flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md">
 					<h1 className="text-lg">Attacker</h1>
-					<div className="grid grid-flow-col gap-4">
+
+					<section className="grid grid-flow-col gap-4">
 						<Field label="HP">
 							<StatInput
 								value={attacker.hp}
@@ -71,9 +72,9 @@ export default function IndexPage() {
 								onTextChange={(evd) => updateAttacker({ evd })}
 							/>
 						</Field>
-					</div>
+					</section>
 
-					<div className="self-start">
+					<section className="self-start">
 						<OptionGroup<Reaction>
 							name="attackerReaction"
 							value={attacker.reaction}
@@ -83,13 +84,24 @@ export default function IndexPage() {
 								{ value: "evade", text: "Evade" },
 							]}
 						/>
-					</div>
+					</section>
+
+					<section>
+						<p>
+							<strong>{percent(result.nobodyWinRate)}</strong> chance of
+							survival
+						</p>
+						<p>
+							<strong>{percent(result.attackerWinRate)}</strong> chance of
+							winning
+						</p>
+					</section>
 				</div>
 
 				<button
 					type="button"
 					className="flex flex-col self-center p-2 space-y-4 text-white transition-colors duration-200 bg-orange-600 rounded-md shadow-md hover:bg-orange-500"
-					title="Switch"
+					title="Swap"
 					onClick={swap}
 				>
 					<svg
@@ -104,7 +116,8 @@ export default function IndexPage() {
 
 				<div className="flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md">
 					<h1 className="text-lg">Defender</h1>
-					<div className="grid grid-flow-col gap-4">
+
+					<section className="grid grid-flow-col gap-4">
 						<Field label="HP">
 							<StatInput
 								value={defender.hp}
@@ -129,9 +142,9 @@ export default function IndexPage() {
 								onTextChange={(evd) => updateDefender({ evd })}
 							/>
 						</Field>
-					</div>
+					</section>
 
-					<div className="self-start">
+					<section className="self-start">
 						<OptionGroup<Reaction>
 							name="defenderReaction"
 							value={defender.reaction}
@@ -141,19 +154,18 @@ export default function IndexPage() {
 								{ value: "evade", text: "Evade" },
 							]}
 						/>
-					</div>
-				</div>
+					</section>
 
-				<div className="p-4 space-y-1 bg-white rounded-md shadow-md">
-					<p>
-						Attacker wins <b>{percent(result.attackerWinRate)}</b> of the time.
-					</p>
-					<p>
-						Defender wins <b>{percent(result.defenderWinRate)}</b> of the time.
-					</p>
-					<p>
-						Both survive <b>{percent(result.nobodyWinRate)}</b> of the time.
-					</p>
+					<section>
+						<p>
+							<strong>{percent(result.nobodyWinRate)}</strong> chance of
+							survival
+						</p>
+						<p>
+							<strong>{percent(result.defenderWinRate)}</strong> chance of
+							winning
+						</p>
+					</section>
 				</div>
 			</form>
 		</main>
@@ -179,7 +191,7 @@ function getBattleResult(
 ) {
 	let wins: Array<"attacker" | "defender" | "nobody"> = []
 
-	for (let i = 0; i < 10000; i++) {
+	for (let i = 0; i < 100000; i++) {
 		const round1 =
 			defenderReaction === "defend"
 				? getDefenseRoundResult(attacker, defender)
