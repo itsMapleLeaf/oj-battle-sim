@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import Field from "../components/Field"
 import OptionGroup from "../components/OptionGroup"
 import StatInput from "../components/StatInput"
@@ -13,26 +13,28 @@ import { count } from "../helpers/common"
 type Reaction = "defend" | "evade"
 
 export default function IndexPage() {
-	const attacker = useFormValues({
+	const [attacker, setAttacker] = useState({
 		...createStatGroup(),
 		reaction: "defend" as Reaction,
 	})
+	const updateAttacker = usePartialSetState(setAttacker)
 
-	const defender = useFormValues({
+	const [defender, setDefender] = useState({
 		...createStatGroup(),
 		reaction: "defend" as Reaction,
 	})
+	const updateDefender = usePartialSetState(setDefender)
 
 	const result = getBattleResult(
-		attacker.values,
-		defender.values,
-		attacker.values.reaction,
-		defender.values.reaction,
+		attacker,
+		defender,
+		attacker.reaction,
+		defender.reaction,
 	)
 
 	function swap() {
-		attacker.set(defender.values)
-		defender.set(attacker.values)
+		setAttacker(defender)
+		setAttacker(attacker)
 	}
 
 	return (
@@ -42,24 +44,36 @@ export default function IndexPage() {
 					<h1 className="text-lg">Attacker</h1>
 					<div className="grid grid-flow-col gap-4">
 						<Field label="HP">
-							<StatInput {...attacker.bindNumber("hp")} />
+							<StatInput
+								defaultValue={5}
+								onValueChange={(hp) => updateAttacker({ hp })}
+							/>
 						</Field>
 						<Field label="ATK">
-							<StatInput {...attacker.bindNumber("atk")} />
+							<StatInput
+								defaultValue={0}
+								onValueChange={(atk) => updateAttacker({ atk })}
+							/>
 						</Field>
 						<Field label="DEF">
-							<StatInput {...attacker.bindNumber("def")} />
+							<StatInput
+								defaultValue={0}
+								onValueChange={(def) => updateAttacker({ def })}
+							/>
 						</Field>
 						<Field label="EVD">
-							<StatInput {...attacker.bindNumber("evd")} />
+							<StatInput
+								defaultValue={0}
+								onValueChange={(evd) => updateAttacker({ evd })}
+							/>
 						</Field>
 					</div>
 
 					<div className="self-start">
 						<OptionGroup<Reaction>
 							name="attackerReaction"
-							value={attacker.values.reaction}
-							onChange={(reaction) => attacker.merge({ reaction })}
+							value={attacker.reaction}
+							onChange={(reaction) => updateAttacker({ reaction })}
 							options={[
 								{ value: "defend", text: "Defend" },
 								{ value: "evade", text: "Evade" },
@@ -88,24 +102,36 @@ export default function IndexPage() {
 					<h1 className="text-lg">Defender</h1>
 					<div className="grid grid-flow-col gap-4">
 						<Field label="HP">
-							<StatInput {...defender.bindNumber("hp")} />
+							<StatInput
+								defaultValue={5}
+								onValueChange={(hp) => updateDefender({ hp })}
+							/>
 						</Field>
 						<Field label="ATK">
-							<StatInput {...defender.bindNumber("atk")} />
+							<StatInput
+								defaultValue={0}
+								onValueChange={(atk) => updateDefender({ atk })}
+							/>
 						</Field>
 						<Field label="DEF">
-							<StatInput {...defender.bindNumber("def")} />
+							<StatInput
+								defaultValue={0}
+								onValueChange={(def) => updateDefender({ def })}
+							/>
 						</Field>
 						<Field label="EVD">
-							<StatInput {...defender.bindNumber("evd")} />
+							<StatInput
+								defaultValue={0}
+								onValueChange={(evd) => updateDefender({ evd })}
+							/>
 						</Field>
 					</div>
 
 					<div className="self-start">
 						<OptionGroup<Reaction>
 							name="defenderReaction"
-							value={defender.values.reaction}
-							onChange={(reaction) => defender.merge({ reaction })}
+							value={defender.reaction}
+							onChange={(reaction) => updateDefender({ reaction })}
 							options={[
 								{ value: "defend", text: "Defend" },
 								{ value: "evade", text: "Evade" },
@@ -130,23 +156,15 @@ export default function IndexPage() {
 	)
 }
 
-function useFormValues<T>(initialValues: T) {
-	const [values, setValues] = useState(initialValues)
-
-	function merge(partialValues: Partial<T>) {
-		setValues((prev) => ({ ...prev, ...partialValues }))
-	}
-
-	function bindNumber<K extends keyof T>(key: K) {
-		return {
-			value: String(values[key]),
-			onChange: (event: React.ChangeEvent<{ value: string }>) => {
-				merge({ [key]: Number(event.target.value) || 0 } as any)
-			},
-		}
-	}
-
-	return { values, set: setValues, merge, bindNumber }
+function usePartialSetState<T>(
+	setState: React.Dispatch<React.SetStateAction<T>>,
+) {
+	return useCallback(
+		(partialUpdate: Partial<T>) => {
+			setState((prev) => ({ ...prev, ...partialUpdate }))
+		},
+		[setState],
+	)
 }
 
 function getBattleResult(
