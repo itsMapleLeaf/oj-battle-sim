@@ -1,6 +1,6 @@
 import preactRefresh from "@prefresh/vite"
 import { defineConfig } from "vite"
-import babelMacros from "./plugins/babel-macros"
+import babelMacros from "vite-plugin-babel-macros"
 
 export default defineConfig({
 	plugins: [preactRefresh(), babelMacros()],

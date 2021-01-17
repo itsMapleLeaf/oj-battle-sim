@@ -1,0 +1,14 @@
+{
+	"dependencies": {
+		"@babel/core": "^7.12.10",
+		"@babel/plugin-syntax-jsx": "^7.12.1",
+		"@babel/plugin-syntax-typescript": "^7.12.1",
+		"babel-plugin-macros": "^3.0.1"
+	},
+	"main": "index.js",
+	"name": "vite-plugin-babel-macros",
+	"peerDependencies": {
+		"vite": ">=2.0.0-beta.30"
+	},
+	"types": "index.d.ts"
+}
