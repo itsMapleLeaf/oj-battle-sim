@@ -3,6 +3,10 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
 	plugins: [prefresh()],
+	alias: {
+		react: "preact/compat",
+		"react-dom": "preact/compat",
+	},
 	esbuild: {
 		jsxInject: `import { h, Fragment } from 'preact'`,
 		jsxFactory: "h",

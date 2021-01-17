@@ -1,37 +1,11 @@
 import { StateUpdater, useCallback, useState } from "preact/hooks"
 import { tw } from "twind"
-import { Fighter, getDefenseRoundResult, getEvadeRoundResult } from "./battle"
-import { count, mapValues, omit } from "./common"
-import Field from "./Field"
-import OptionGroup from "./OptionGroup"
-import StatInput from "./StatInput"
-
-type Reaction = "defend" | "evade"
-
-const initialValues = {
-	hp: "5",
-	atk: "0",
-	def: "0",
-	evd: "0",
-	reaction: "defend" as Reaction,
-}
-
-const toFighter = (values: typeof initialValues): Fighter =>
-	mapValues(omit(values, ["reaction"]), (value) => Number(value) || 0)
+import { createPlayer } from "./player-state"
+import PlayerCard from "./PlayerCard"
 
 export default function App() {
-	const [attacker, setAttacker] = useState(initialValues)
-	const updateAttacker = usePartialSetState(setAttacker)
-
-	const [defender, setDefender] = useState(initialValues)
-	const updateDefender = usePartialSetState(setDefender)
-
-	const result = getBattleResult(
-		toFighter(attacker),
-		toFighter(defender),
-		attacker.reaction,
-		defender.reaction,
-	)
+	const [attacker, setAttacker] = useState(createPlayer)
+	const [defender, setDefender] = useState(createPlayer)
 
 	function swap() {
 		setAttacker(defender)
@@ -41,61 +15,12 @@ export default function App() {
 	return (
 		<main class={tw`px-4 py-20`}>
 			<form class={tw`flex flex-col w-full max-w-md mx-auto space-y-4`}>
-				<div
-					class={tw`flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md`}
-				>
-					<h1 class={tw`text-lg`}>Attacker</h1>
-
-					<section class={tw`grid grid-flow-col gap-4`}>
-						<Field label="HP">
-							<StatInput
-								value={attacker.hp}
-								onTextChange={(hp) => updateAttacker({ hp })}
-							/>
-						</Field>
-						<Field label="ATK">
-							<StatInput
-								value={attacker.atk}
-								onTextChange={(atk) => updateAttacker({ atk })}
-							/>
-						</Field>
-						<Field label="DEF">
-							<StatInput
-								value={attacker.def}
-								onTextChange={(def) => updateAttacker({ def })}
-							/>
-						</Field>
-						<Field label="EVD">
-							<StatInput
-								value={attacker.evd}
-								onTextChange={(evd) => updateAttacker({ evd })}
-							/>
-						</Field>
-					</section>
-
-					<section class={tw`self-start`}>
-						<OptionGroup<Reaction>
-							name="attackerReaction"
-							value={attacker.reaction}
-							onChange={(reaction) => updateAttacker({ reaction })}
-							options={[
-								{ value: "defend", text: "Defend" },
-								{ value: "evade", text: "Evade" },
-							]}
-						/>
-					</section>
-
-					<section>
-						<p>
-							<strong>{percent(result.nobodyWinRate)}</strong> chance of
-							survival
-						</p>
-						<p>
-							<strong>{percent(result.attackerWinRate)}</strong> chance of
-							winning
-						</p>
-					</section>
-				</div>
+				<PlayerCard
+					title="Attacker"
+					player={attacker}
+					survivalChance={0.5}
+					victoryChance={0.5}
+				/>
 
 				<button
 					type="button"
@@ -113,61 +38,12 @@ export default function App() {
 					</svg>
 				</button>
 
-				<div
-					class={tw`flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md`}
-				>
-					<h1 class={tw`text-lg`}>Defender</h1>
-
-					<section class={tw`grid grid-flow-col gap-4`}>
-						<Field label="HP">
-							<StatInput
-								value={defender.hp}
-								onTextChange={(hp) => updateDefender({ hp })}
-							/>
-						</Field>
-						<Field label="ATK">
-							<StatInput
-								value={defender.atk}
-								onTextChange={(atk) => updateDefender({ atk })}
-							/>
-						</Field>
-						<Field label="DEF">
-							<StatInput
-								value={defender.def}
-								onTextChange={(def) => updateDefender({ def })}
-							/>
-						</Field>
-						<Field label="EVD">
-							<StatInput
-								value={defender.evd}
-								onTextChange={(evd) => updateDefender({ evd })}
-							/>
-						</Field>
-					</section>
-
-					<section class={tw`self-start`}>
-						<OptionGroup<Reaction>
-							name="defenderReaction"
-							value={defender.reaction}
-							onChange={(reaction) => updateDefender({ reaction })}
-							options={[
-								{ value: "defend", text: "Defend" },
-								{ value: "evade", text: "Evade" },
-							]}
-						/>
-					</section>
-
-					<section>
-						<p>
-							<strong>{percent(result.nobodyWinRate)}</strong> chance of
-							survival
-						</p>
-						<p>
-							<strong>{percent(result.defenderWinRate)}</strong> chance of
-							winning
-						</p>
-					</section>
-				</div>
+				<PlayerCard
+					title="Defender"
+					player={defender}
+					survivalChance={0.5}
+					victoryChance={0.5}
+				/>
 			</form>
 		</main>
 	)
@@ -180,42 +56,4 @@ function usePartialSetState<T>(setState: StateUpdater<T>) {
 		},
 		[setState],
 	)
-}
-
-function getBattleResult(
-	attacker: Fighter,
-	defender: Fighter,
-	attackerReaction: Reaction,
-	defenderReaction: Reaction,
-) {
-	let wins: Array<"attacker" | "defender" | "nobody"> = []
-
-	for (let i = 0; i < 100000; i++) {
-		const round1 =
-			defenderReaction === "defend"
-				? getDefenseRoundResult(attacker, defender)
-				: getEvadeRoundResult(attacker, defender)
-
-		if (round1.defenderHealth <= 0) {
-			wins.push("attacker")
-			continue
-		}
-
-		const round2 =
-			attackerReaction === "defend"
-				? getDefenseRoundResult(defender, attacker)
-				: getEvadeRoundResult(defender, attacker)
-
-		wins.push(round2.defenderHealth <= 0 ? "defender" : "nobody")
-	}
-
-	return {
-		attackerWinRate: count(wins, "attacker") / wins.length,
-		defenderWinRate: count(wins, "defender") / wins.length,
-		nobodyWinRate: count(wins, "nobody") / wins.length,
-	}
-}
-
-function percent(value: number) {
-	return `${Math.round(value * 100)}%`
 }

@@ -33,3 +33,13 @@ export function omit<Input, Key extends keyof Input>(
 	}
 	return result
 }
+
+/**
+ * Converts a number from 0 to 1 to percentage
+ */
+export function percent(value: number) {
+	return `${Math.round(value * 100)}%`
+}
+
+type EntriesFn = <K extends PropertyKey, V>(obj: Record<K, V>) => Array<[K, V]>
+export const entries = Object.entries as EntriesFn
