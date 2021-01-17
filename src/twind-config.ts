@@ -1,4 +1,4 @@
-import { Configuration } from "twind"
+import type { Configuration } from "twind"
 import * as colors from "twind/colors"
 
 export const twindConfig: Configuration = {

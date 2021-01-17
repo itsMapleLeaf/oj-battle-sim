@@ -15,6 +15,7 @@
 		"noEmit": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "preact",
+		"importsNotUsedAsValues": "error",
 		"paths": {
 			"react": ["./node_modules/preact/compat"],
 			"react-dom": ["./node_modules/preact/compat"]

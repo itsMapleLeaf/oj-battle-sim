@@ -1,5 +1,5 @@
 import "@twind/macro"
-import { ComponentChildren } from "preact"
+import type { ComponentChildren } from "preact"
 
 export default function Field({
 	label,

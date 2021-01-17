@@ -1,5 +1,5 @@
 import "@twind/macro"
-import { ComponentChildren } from "preact"
+import type { ComponentChildren } from "preact"
 
 type Props<T> = {
 	name: string
