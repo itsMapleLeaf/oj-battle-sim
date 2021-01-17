@@ -1,3 +1,4 @@
+import "@twind/macro"
 import { StateUpdater, useCallback, useState } from "preact/hooks"
 import { Fighter, getDefenseRoundResult, getEvadeRoundResult } from "./battle"
 import { count, mapValues, omit } from "./common"
@@ -38,12 +39,12 @@ export default function App() {
 	}
 
 	return (
-		<main className="px-4 py-20">
-			<form className="flex flex-col w-full max-w-md mx-auto space-y-4">
-				<div className="flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md">
-					<h1 className="text-lg">Attacker</h1>
+		<main tw="px-4 py-20">
+			<form tw="flex flex-col w-full max-w-md mx-auto space-y-4">
+				<div tw="flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md">
+					<h1 tw="text-lg">Attacker</h1>
 
-					<section className="grid grid-flow-col gap-4">
+					<section tw="grid grid-flow-col gap-4">
 						<Field label="HP">
 							<StatInput
 								value={attacker.hp}
@@ -70,7 +71,7 @@ export default function App() {
 						</Field>
 					</section>
 
-					<section className="self-start">
+					<section tw="self-start">
 						<OptionGroup<Reaction>
 							name="attackerReaction"
 							value={attacker.reaction}
@@ -96,7 +97,7 @@ export default function App() {
 
 				<button
 					type="button"
-					className="flex flex-col self-center p-2 space-y-4 text-white transition-colors duration-200 bg-orange-600 rounded-md shadow-md hover:bg-orange-500"
+					tw="flex flex-col self-center p-2 space-y-4 text-white transition-colors duration-200 bg-orange-600 rounded-md shadow-md hover:bg-orange-500"
 					title="Swap"
 					onClick={swap}
 				>
@@ -104,16 +105,16 @@ export default function App() {
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
 						fill="currentColor"
-						className="w-8"
+						tw="w-8"
 					>
 						<path d="M5 12a1 1 0 102 0V6.414l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L5 6.414V12zM15 8a1 1 0 10-2 0v5.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L15 13.586V8z" />
 					</svg>
 				</button>
 
-				<div className="flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md">
-					<h1 className="text-lg">Defender</h1>
+				<div tw="flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md">
+					<h1 tw="text-lg">Defender</h1>
 
-					<section className="grid grid-flow-col gap-4">
+					<section tw="grid grid-flow-col gap-4">
 						<Field label="HP">
 							<StatInput
 								value={defender.hp}
@@ -140,7 +141,7 @@ export default function App() {
 						</Field>
 					</section>
 
-					<section className="self-start">
+					<section tw="self-start">
 						<OptionGroup<Reaction>
 							name="defenderReaction"
 							value={defender.reaction}

@@ -1,3 +1,4 @@
+import "@twind/macro"
 import { ComponentChildren } from "preact"
 
 export default function Field({
@@ -8,8 +9,8 @@ export default function Field({
 	children: ComponentChildren
 }) {
 	return (
-		<label className="space-y-1">
-			<div className="text-sm">{label}</div>
+		<label tw="space-y-1">
+			<div tw="text-sm">{label}</div>
 			{children}
 		</label>
 	)
