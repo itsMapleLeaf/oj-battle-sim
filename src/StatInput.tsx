@@ -13,6 +13,17 @@ export default function StatInput({
 			value={value}
 			onInput={(event) => onTextChange?.(event.currentTarget.value)}
 			onFocus={(event) => event.currentTarget.select()}
+			onKeyDown={(event) => {
+				const value = Number(event.currentTarget.value) || 0
+				if (event.code === "ArrowUp") {
+					event.preventDefault()
+					onTextChange(String(value + 1))
+				}
+				if (event.code === "ArrowDown") {
+					event.preventDefault()
+					onTextChange(String(value - 1))
+				}
+			}}
 		/>
 	)
 }
