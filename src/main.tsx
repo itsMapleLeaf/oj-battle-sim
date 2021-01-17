@@ -1,4 +1,3 @@
-import "@twind/macro"
 import { render } from "preact"
 import { setup } from "twind"
 import App from "./App"

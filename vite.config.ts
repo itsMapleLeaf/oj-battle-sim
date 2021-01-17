@@ -1,9 +1,8 @@
 import prefresh from "@prefresh/vite"
 import { defineConfig } from "vite"
-import macros from "vite-plugin-babel-macros"
 
 export default defineConfig({
-	plugins: [prefresh(), macros()],
+	plugins: [prefresh()],
 	esbuild: {
 		jsxInject: `import { h, Fragment } from 'preact'`,
 		jsxFactory: "h",
