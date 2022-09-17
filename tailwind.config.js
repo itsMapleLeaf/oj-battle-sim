@@ -1,13 +1,10 @@
 module.exports = {
-	purge: [],
+	content: ["index.html", "src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		fontFamily: {
-			body: `Rubik, sans-serif`,
+			sans: `Rubik, sans-serif`,
 		},
 		extend: {},
-	},
-	variants: {
-		borderColor: ["hover", "focus", "focus-within"],
 	},
 	plugins: [],
 }

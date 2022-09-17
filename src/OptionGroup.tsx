@@ -1,5 +1,4 @@
 import type { ComponentChildren } from "preact"
-import { tw } from "twind"
 
 type Props<T> = {
 	name: string
@@ -25,23 +24,21 @@ export default function OptionGroup<T>({
 				? "bg-orange-600 text-white"
 				: "hover:bg-orange-200"
 
-		return tw`px-3 py-2 transition-colors duration-200 cursor-pointer ${activeClass}`
+		return `px-3 py-2 transition-colors duration-200 cursor-pointer ${activeClass}`
 	}
 
 	return (
-		<div
-			class={tw`flex flex-row overflow-hidden transition-colors duration-200 border-2 rounded-md focus-within:border-orange-500`}
-		>
+		<div class="flex flex-row overflow-hidden transition-colors duration-200 border-2 rounded-md focus-within:border-orange-500">
 			{options.map((opt, index) => (
 				<label key={index} class={getLabelClass(opt)}>
 					<input
 						type="radio"
-						class={tw`absolute opacity-0`}
+						class="absolute opacity-0"
 						name={name}
 						checked={opt.value === value}
 						onChange={() => onChange(opt.value)}
 					/>
-					<span class={tw`select-none`}>{opt.text}</span>
+					<span class="select-none">{opt.text}</span>
 				</label>
 			))}
 		</div>

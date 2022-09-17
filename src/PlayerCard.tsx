@@ -1,6 +1,5 @@
 import { useObservable, WritableObservable } from "micro-observables"
 import type { ComponentChildren } from "preact"
-import { tw } from "twind"
 import type { Reaction } from "./battle"
 import { entries, percent } from "./common"
 import Field from "./Field"
@@ -21,16 +20,16 @@ export default function PlayerCard({
 }) {
 	const reaction = useObservable(player.reaction)
 	return (
-		<div class={tw`flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md`}>
-			<h1 class={tw`text-lg`}>{title}</h1>
+		<div class="flex flex-col p-4 space-y-4 bg-white rounded-md shadow-md">
+			<h1 class="text-lg">{title}</h1>
 
-			<section class={tw`grid grid-flow-col gap-4`}>
+			<section class="grid grid-flow-col gap-4">
 				{entries(player.stats).map(([key, value]) => (
 					<StatField key={key} name={key} value={value} />
 				))}
 			</section>
 
-			<section class={tw`self-start`}>
+			<section class="self-start">
 				<OptionGroup<Reaction>
 					name="attackerReaction"
 					value={reaction}
