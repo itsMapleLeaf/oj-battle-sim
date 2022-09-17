@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fontsource/rubik': ^4.5.11
   '@prefresh/vite': ^2.0.1
   micro-observables: ^1.7.0
   preact: ^10.5.10
@@ -9,6 +10,7 @@ specifiers:
   vite: ^2.0.0-beta.30
 
 dependencies:
+  '@fontsource/rubik': 4.5.11
   micro-observables: 1.7.0
   preact: 10.5.10
 
@@ -189,6 +191,10 @@ packages:
       lodash: 4.17.20
       to-fast-properties: 2.0.0
     dev: true
+
+  /@fontsource/rubik/4.5.11:
+    resolution: {integrity: sha512-m0/4GKOqJjF9cB4wuLgDhRdRVt35WzqI5n7SgddRjRD+yzsO0eEq/ak0ezgfbR3+f91ydDCek1+RuOVB8dNYwg==}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

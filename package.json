@@ -5,6 +5,7 @@
 		"build": "vite build"
 	},
 	"dependencies": {
+		"@fontsource/rubik": "^4.5.11",
 		"micro-observables": "^1.7.0",
 		"preact": "^10.5.10"
 	},
