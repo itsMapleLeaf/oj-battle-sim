@@ -2,11 +2,17 @@ import { effect, signal } from "@preact/signals"
 import { Moon, Sun } from "preact-feather"
 import { SolidButton } from "./solid-button"
 
-const darkMode = signal(localStorage.getItem("darkMode") === "true")
-effect(() => {
-	localStorage.setItem("darkMode", darkMode.value ? "true" : "false")
-	document.documentElement.classList.toggle("dark", darkMode.value)
-})
+const darkMode = signal(
+	typeof window !== "undefined"
+		? localStorage.getItem("darkMode") === "true"
+		: false,
+)
+if (typeof window !== "undefined") {
+	effect(() => {
+		localStorage.setItem("darkMode", darkMode.value ? "true" : "false")
+		document.documentElement.classList.toggle("dark", darkMode.value)
+	})
+}
 
 export function ThemeButton() {
 	return (

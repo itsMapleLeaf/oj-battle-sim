@@ -1,0 +1,55 @@
+---
+import "@fontsource/rubik/variable.css"
+import { Simulator } from "../simulator"
+
+const title = "Battle Simulator - 100% Orange Juice"
+const description =
+	"find out your chances of dying, because gambling blind is dangerous"
+---
+
+<!DOCTYPE html>
+<html lang="en" class="min-h-screen">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+
+		<meta property="theme-color" content="#c2410c" />
+
+		<title>{title}</title>
+
+		<!-- synchronously set the theme preference before paint -->
+		<script is:inline>
+			if (localStorage.getItem("darkMode") === null) {
+				localStorage.setItem(
+					"darkMode",
+					String(window.matchMedia("(prefers-color-scheme: dark)").matches),
+				)
+			}
+			document.documentElement.classList.toggle(
+				"dark",
+				localStorage.getItem("darkMode") === "true",
+			)
+		</script>
+	</head>
+	<body
+		class="flex flex-col min-h-screen bg-gradient-to-b from-orange-100 to-orange-300 dark:from-stone-700 dark:to-stone-900 dark:text-white"
+	>
+		<div class="m-auto">
+			<!-- this errors when server rendered -->
+			<!-- https://github.com/preactjs/signals/issues/168 -->
+			<Simulator client:only="preact" />
+		</div>
+	</body>
+</html>

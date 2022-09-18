@@ -104,7 +104,7 @@ const defenderSurvivalChance = computed(() =>
 	countAverage(results.value, (result) => result.defenderSurvived),
 )
 
-export function App() {
+export function Simulator() {
 	return (
 		<main class="px-4 py-20">
 			<div class="flex flex-col items-center w-full max-w-md mx-auto space-y-4">
