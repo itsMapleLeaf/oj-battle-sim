@@ -32,7 +32,10 @@ export function Combobox<T>({
 			}
 		},
 		onSelectedItemChange: ({ selectedItem }) => {
-			if (selectedItem) onSelectedItemChange(selectedItem)
+			if (selectedItem) {
+				onSelectedItemChange(selectedItem)
+				combobox.closeMenu()
+			}
 		},
 	})
 
@@ -51,8 +54,12 @@ export function Combobox<T>({
 				<input
 					class={textInputClass}
 					placeholder="Select a preset..."
-					// @ts-expect-error
-					{...combobox.getInputProps({ ref: rectRef })}
+					{...combobox.getInputProps({
+						// @ts-expect-error
+						ref: rectRef,
+						onClick: combobox.openMenu,
+						onFocus: combobox.openMenu,
+					})}
 				/>
 				<div class="flex absolute right-0 inset-y-0">
 					{!!value && (
