@@ -1,0 +1,801 @@
+{
+	"QP": {
+		"hp": 5,
+		"atk": 0,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "QP Shooting",
+		"sprite": "QPhead.png"
+	},
+
+	"Suguri": {
+		"hp": 4,
+		"atk": 1,
+		"def": -1,
+		"evd": 2,
+		"rec": 5,
+		"origin": "Suguri",
+		"sprite": "Sugurihead.png"
+	},
+
+	"Marc": {
+		"hp": 4,
+		"atk": 1,
+		"def": 1,
+		"evd": -1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Marchead.png"
+	},
+
+	"Kai": {
+		"hp": 5,
+		"atk": 1,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Kaihead.png"
+	},
+
+	"Yuki": {
+		"hp": 5,
+		"atk": 2,
+		"def": -1,
+		"evd": -1,
+		"rec": 5,
+		"origin": "QP Shooting",
+		"sprite": "Yukihead.png"
+	},
+
+	"Aru": {
+		"hp": 5,
+		"atk": -1,
+		"def": -1,
+		"evd": 2,
+		"rec": 5,
+		"origin": "Christmas Shooting",
+		"sprite": "Aruhead.png"
+	},
+
+	"Hime": {
+		"hp": 5,
+		"atk": 1,
+		"def": -1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Suguri",
+		"sprite": "Himehead.png"
+	},
+
+	"Sora": {
+		"hp": 4,
+		"atk": 1,
+		"def": 0,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Sorahead.png"
+	},
+
+	"Fernet": {
+		"hp": 6,
+		"atk": -1,
+		"def": 2,
+		"evd": -2,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Fernethead.png"
+	},
+
+	"Peat": {
+		"hp": 3,
+		"atk": 1,
+		"def": 1,
+		"evd": 1,
+		"rec": 4,
+		"origin": "Flying Red Barrel",
+		"sprite": "Peathead.png"
+	},
+
+	"Marie Poppo": {
+		"hp": 7,
+		"atk": -1,
+		"def": -1,
+		"evd": -1,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Marie Poppohead.png"
+	},
+
+	"Tomomo (Unsoftened)": {
+		"hp": 6,
+		"atk": 2,
+		"def": 0,
+		"evd": 1,
+		"rec": 6,
+		"origin": "100% Orange Juice",
+		"sprite": "Tomomohead.png"
+	},
+
+	"Tomomo (Softened)": {
+		"hp": 4,
+		"atk": 2,
+		"def": 0,
+		"evd": 0,
+		"rec": 6,
+		"origin": "100% Orange Juice",
+		"sprite": "Tomomohead.png"
+	},
+
+	"Mio": {
+		"hp": 6,
+		"atk": 0,
+		"def": -1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Miohead.png"
+	},
+
+	"Syura": {
+		"hp": 4,
+		"atk": 0,
+		"def": 1,
+		"evd": 0,
+		"rec": 4,
+		"origin": "QP Shooting - Dangerous!!",
+		"sprite": "Syurahead.png"
+	},
+
+	"Nanako": {
+		"hp": 3,
+		"atk": 0,
+		"def": 2,
+		"evd": 1,
+		"rec": 4,
+		"origin": "Suguri",
+		"sprite": "Nanakohead.png"
+	},
+
+	"Saki": {
+		"hp": 4,
+		"atk": 0,
+		"def": 0,
+		"evd": 1,
+		"rec": 4,
+		"origin": "Suguri",
+		"sprite": "Sakihead.png"
+	},
+
+	"Kyousuke": {
+		"hp": 5,
+		"atk": -1,
+		"def": 2,
+		"evd": 0,
+		"rec": 5,
+		"origin": "QP Kiss",
+		"sprite": "Kyousukehead.png"
+	},
+
+	"Krilalaris": {
+		"hp": 6,
+		"atk": 0,
+		"def": 0,
+		"evd": -1,
+		"rec": 5,
+		"origin": "QP Shooting - Dangerous!!",
+		"sprite": "Krilalarishead.png"
+	},
+
+	"Kae": {
+		"hp": 4,
+		"atk": 0,
+		"def": -1,
+		"evd": 1,
+		"rec": 4,
+		"origin": "Suguri",
+		"sprite": "Kaehead.png"
+	},
+
+	"Alte": {
+		"hp": 5,
+		"atk": 0,
+		"def": -1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Altehead.png"
+	},
+
+	"Kyoko": {
+		"hp": 5,
+		"atk": -1,
+		"def": 3,
+		"evd": -2,
+		"rec": 5,
+		"origin": "Suguri",
+		"sprite": "Kyokohead.png"
+	},
+
+	"Sham": {
+		"hp": 4,
+		"atk": 0,
+		"def": 1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Shamhead.png"
+	},
+
+	"Sherry": {
+		"hp": 5,
+		"atk": 1,
+		"def": 1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Sherryhead.png"
+	},
+
+	"Star Breaker": {
+		"hp": 5,
+		"atk": 2,
+		"def": 0,
+		"evd": -1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "StarBreakerhead.png"
+	},
+
+	"Sweet Breaker": {
+		"hp": 6,
+		"atk": 0,
+		"def": 0,
+		"evd": 0,
+		"rec": 6,
+		"origin": "QP Shooting - Dangerous!!",
+		"sprite": "Sweet Breakerhead.png"
+	},
+
+	"Nath": {
+		"hp": 5,
+		"atk": -1,
+		"def": -1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Nathhead.png"
+	},
+
+	"Mimyuu": {
+		"hp": 3,
+		"atk": -1,
+		"def": 0,
+		"evd": 1,
+		"rec": 1,
+		"origin": "QP Shooting",
+		"sprite": "Mimyuuhead.png"
+	},
+
+	"Tomato": {
+		"hp": 3,
+		"atk": 1,
+		"def": 0,
+		"evd": 0,
+		"rec": 3,
+		"origin": "QP Shooting",
+		"sprite": "Tomatohead.png"
+	},
+
+	"Kiriko": {
+		"hp": 8,
+		"atk": 0,
+		"def": -1,
+		"evd": 0,
+		"rec": 5,
+		"origin": "Xmas Shooting - Scramble!!",
+		"sprite": "Kirikohead.png"
+	},
+
+	"NoName": {
+		"hp": 5,
+		"atk": 1,
+		"def": -1,
+		"evd": 0,
+		"rec": 6,
+		"origin": "Acceleration of SUGURI",
+		"sprite": "NoNamehead.png"
+	},
+
+	"NoName (Head)": {
+		"hp": 2,
+		"atk": -1,
+		"def": -1,
+		"evd": -1,
+		"rec": 6,
+		"origin": "Acceleration of SUGURI",
+		"sprite": "NoNamehead2.png"
+	},
+
+	"Miusaki": {
+		"hp": 4,
+		"atk": 1,
+		"def": -2,
+		"evd": 0,
+		"rec": 5,
+		"origin": "Alicianrone",
+		"sprite": "Miusakihead.png"
+	},
+
+	"Ceoreparque": {
+		"hp": 4,
+		"atk": 0,
+		"def": 0,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Alicianrone",
+		"sprite": "Ceoreparquehead.png"
+	},
+
+	"Yuki (Dangerous)": {
+		"hp": 5,
+		"atk": 1,
+		"def": 0,
+		"evd": -1,
+		"rec": 5,
+		"origin": "QP Shooting - Dangerous!!",
+		"sprite": "Yuki(Dangerous)head.png"
+	},
+
+	"Tomomo (Casual)": {
+		"hp": 4,
+		"atk": -1,
+		"def": 0,
+		"evd": 1,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Tomomo(Casual)head.png"
+	},
+
+	"Tomomo (Sweet Eater)": {
+		"hp": 6,
+		"atk": 3,
+		"def": 0,
+		"evd": 0,
+		"rec": 6,
+		"origin": "100% Orange Juice",
+		"sprite": "Tomomo(SweetEater)head.png"
+	},
+
+	"Tequila": {
+		"hp": 5,
+		"atk": 0,
+		"def": 1,
+		"evd": -3,
+		"rec": 6,
+		"origin": "Flying Red Barrel",
+		"sprite": "Tequilahead.png"
+	},
+
+	"Tsih": {
+		"hp": 4,
+		"atk": 0,
+		"def": -1,
+		"evd": 2,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Tsihhead.png"
+	},
+
+	"Mei": {
+		"hp": 4,
+		"atk": 0,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "QP Shooting",
+		"sprite": "Meihead.png"
+	},
+
+	"Natsumi": {
+		"hp": 5,
+		"atk": -1,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "Xmas Shooting - Scramble!!",
+		"sprite": "Natsumihead.png"
+	},
+
+	"Nico": {
+		"hp": 4,
+		"atk": 0,
+		"def": 0,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Xmas Shooting - Scramble!!",
+		"sprite": "Nicohead.png"
+	},
+
+	"Arthur": {
+		"hp": 7,
+		"atk": 0,
+		"def": -1,
+		"evd": -1,
+		"rec": 6,
+		"origin": "Christmas Shooting",
+		"sprite": "Arthurhead.png"
+	},
+
+	"Iru": {
+		"hp": 5,
+		"atk": 0,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "Suguri",
+		"sprite": "Iruhead.png"
+	},
+
+	"Mira": {
+		"hp": 5,
+		"atk": 1,
+		"def": -1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Mirahead.png"
+	},
+
+	"Cuties": {
+		"hp": 4,
+		"atk": 0,
+		"def": 0,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Cutieshead.png"
+	},
+
+	"Yuuki": {
+		"hp": 4,
+		"atk": 0,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "QP Shooting",
+		"sprite": "Yuukihead.png"
+	},
+
+	"Islay": {
+		"hp": 5,
+		"atk": 1,
+		"def": 1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Islayhead.png"
+	},
+
+	"Suguri (46 Billion Years)": {
+		"hp": 4,
+		"atk": 0,
+		"def": 0,
+		"evd": 2,
+		"rec": 5,
+		"origin": "200% Mixed Juice!",
+		"sprite": "Suguri (46 Billion Years)head.png"
+	},
+
+	"Sumika": {
+		"hp": 5,
+		"atk": 1,
+		"def": -1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "200% Mixed Juice!",
+		"sprite": "Sumikahead.png"
+	},
+
+	"Ellie": {
+		"hp": 5,
+		"atk": 1,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Elliehead.png"
+	},
+
+	"Lulu": {
+		"hp": 5,
+		"atk": 0,
+		"def": 1,
+		"evd": -1,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Luluhead.png"
+	},
+
+	"Alicianrone": {
+		"hp": 4,
+		"atk": 1,
+		"def": -1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Alicianrone",
+		"sprite": "Alicianronehead.png"
+	},
+
+	"Teotoratta": {
+		"hp": 5,
+		"atk": 0,
+		"def": 0,
+		"evd": 1,
+		"rec": 4,
+		"origin": "Alicianrone",
+		"sprite": "Teotorattahead.png"
+	},
+
+	"Arnelle": {
+		"hp": 5,
+		"atk": 1,
+		"def": -1,
+		"evd": 0,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Arnellehead.png"
+	},
+
+	"Maynie": {
+		"hp": 4,
+		"atk": 0,
+		"def": 1,
+		"evd": 0,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Mayniehead.png"
+	},
+
+	"Chris": {
+		"hp": 5,
+		"atk": -1,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "QP Shooting",
+		"sprite": "Chrishead.png"
+	},
+
+	"Kyupita": {
+		"hp": 5,
+		"atk": 0,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "QP Kiss",
+		"sprite": "Kyupitahead.png"
+	},
+
+	"Halena": {
+		"hp": 5,
+		"atk": -1,
+		"def": 1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Halenahead.png"
+	},
+
+	"Cook": {
+		"hp": 4,
+		"atk": 0,
+		"def": -1,
+		"evd": 3,
+		"rec": 5,
+		"origin": "100% Orange Juice",
+		"sprite": "Cookhead.png"
+	},
+
+	"Lone Rider": {
+		"hp": 5,
+		"atk": 0,
+		"def": 0,
+		"evd": -1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "LoneRiderhead.png"
+	},
+
+	"Merchant": {
+		"hp": 5,
+		"atk": 0,
+		"def": 0,
+		"evd": 0,
+		"rec": 6,
+		"origin": "Flying Red Barrel",
+		"sprite": "Merchanthead.png"
+	},
+
+	"Hime (Moonlight)": {
+		"hp": 5,
+		"atk": 1,
+		"def": -2,
+		"evd": 2,
+		"rec": 5,
+		"origin": "Suguri",
+		"sprite": "Hime(Moonlight)head.png"
+	},
+
+	"Fernet (Noble)": {
+		"hp": 6,
+		"atk": -1,
+		"def": 1,
+		"evd": -1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Fernet(Noble)head.png"
+	},
+
+	"Malt": {
+		"hp": 5,
+		"atk": 1,
+		"def": 1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Malthead.png"
+	},
+
+	"Mescal": {
+		"hp": 4,
+		"atk": 0,
+		"def": 1,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Mescalhead.png"
+	},
+
+	"Shifu": {
+		"hp": 8,
+		"atk": 0,
+		"def": -2,
+		"evd": 0,
+		"rec": 5,
+		"origin": "Suguri",
+		"sprite": "Shifuhead.png"
+	},
+
+	"Hoshino Reika": {
+		"hp": 3,
+		"atk": 2,
+		"def": 0,
+		"evd": 0,
+		"rec": 5,
+		"origin": "200% Mixed Juice!",
+		"sprite": "Reikahead.png"
+	},
+
+	"QP (Dangerous)": {
+		"hp": 5,
+		"atk": 0,
+		"def": 0,
+		"evd": -1,
+		"rec": 5,
+		"origin": "QP Shooting - Dangerous!!",
+		"sprite": "QP(Dangerous)head.png"
+	},
+
+	"Marie Poppo (Mixed)": {
+		"hp": 7,
+		"atk": -1,
+		"def": -1,
+		"evd": -1,
+		"rec": 5,
+		"origin": "200% Mixed Juice!",
+		"sprite": "Poppo(Mixed)head.png"
+	},
+
+	"Sora (Military)": {
+		"hp": 4,
+		"atk": 1,
+		"def": 0,
+		"evd": 1,
+		"rec": 5,
+		"origin": "Sora",
+		"sprite": "Sora(Military)head.png"
+	},
+
+	"Aru (Scramble)": {
+		"hp": 5,
+		"atk": -1,
+		"def": -1,
+		"evd": 2,
+		"rec": 5,
+		"origin": "Xmas Shooting - Scramble!!",
+		"sprite": "Aru(Scramble)head.png"
+	},
+
+	"Suguri (Ver.2)": {
+		"hp": 4,
+		"atk": 1,
+		"def": -1,
+		"evd": 2,
+		"rec": 5,
+		"origin": "Acceleration of SUGURI 2",
+		"sprite": "SuguriVer2head.png"
+	},
+
+	"Marc (Pilot)": {
+		"hp": 4,
+		"atk": 1,
+		"def": 1,
+		"evd": -1,
+		"rec": 5,
+		"origin": "Flying Red Barrel",
+		"sprite": "Marc(Pilot)head.png"
+	},
+
+	"Chicken": {
+		"hp": 3,
+		"atk": -1,
+		"def": -1,
+		"evd": 1,
+		"rec": 3,
+		"origin": "QP Shooting",
+		"sprite": "Chickenhead.png"
+	},
+
+	"Robo Ball": {
+		"hp": 3,
+		"atk": -1,
+		"def": 1,
+		"evd": -1,
+		"rec": 4,
+		"origin": "Suguri",
+		"sprite": "Roboballhead.png"
+	},
+
+	"Seagull": {
+		"hp": 3,
+		"atk": 1,
+		"def": -1,
+		"evd": -1,
+		"rec": 4,
+		"origin": "Flying Red Barrel",
+		"sprite": "Seagullhead.png"
+	},
+
+	"Store Manager": {
+		"hp": 6,
+		"atk": 2,
+		"def": 0,
+		"evd": -1,
+		"rec": 6,
+		"origin": "QP Shooting",
+		"sprite": "Managerhead.png"
+	},
+
+	"Shifu Robot": {
+		"hp": 5,
+		"atk": 1,
+		"def": 0,
+		"evd": -1,
+		"rec": 0,
+		"origin": "Suguri",
+		"sprite": "ShifuRobothead.png"
+	},
+
+	"Flying Castle": {
+		"hp": 8,
+		"atk": 1,
+		"def": -1,
+		"evd": -2,
+		"rec": 6,
+		"origin": "Flying Red Barrel",
+		"sprite": "Flying_Castlehead.png"
+	}
+}
