@@ -7,6 +7,7 @@ import { useState } from "preact/hooks"
 import useMeasure from "react-use-measure"
 import characters from "./data/characters.json"
 import { Portal } from "./portal"
+import { textInputClass } from "./styles"
 
 type Preset = typeof characters[string]
 
@@ -49,7 +50,7 @@ export function PresetCombobox({
 				{...combobox.getComboboxProps({ ref: floating.reference })}
 			>
 				<input
-					class="bg-black/20 rounded-md hover:bg-black/30 transition p-3 w-full focus:outline-none ring-orange-500 focus:ring-2"
+					class={textInputClass}
 					placeholder="Select a preset..."
 					// @ts-expect-error
 					{...combobox.getInputProps({ ref: rectRef })}
