@@ -33,20 +33,18 @@ export function PlayerCard({
 			/>
 			<div>
 				<p>
-					You have a{" "}
-					<strong>
-						{useComputed(() => Math.round(victoryChance.value * 100) + `%`)}
-					</strong>{" "}
-					chance of winning.
+					You have a <strong>{usePercent(victoryChance)}</strong> chance of
+					winning.
 				</p>
 				<p>
-					You have a{" "}
-					<strong>
-						{useComputed(() => Math.round(survivalChance.value * 100) + `%`)}
-					</strong>{" "}
-					chance of surviving.
+					You have a <strong>{usePercent(survivalChance)}</strong> chance of
+					surviving.
 				</p>
 			</div>
 		</section>
 	)
+}
+
+function usePercent(signal: Signal<number>) {
+	return useComputed(() => Math.round(signal.value * 100) + `%`)
 }
