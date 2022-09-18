@@ -7,11 +7,17 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
+		"@floating-ui/react-dom": "^1.0.0",
 		"@fontsource/rubik": "^4.5.11",
+		"@headlessui/react": "^1.7.2",
 		"@preact/signals": "^1.0.4",
+		"classnames": "^2.3.2",
+		"downshift": "^6.1.11",
+		"match-sorter": "^6.3.1",
 		"preact": "^10.11.0",
 		"preact-feather": "^4.2.1",
-		"preact-render-to-string": "^5.2.4"
+		"preact-render-to-string": "^5.2.4",
+		"react-use-measure": "^2.1.1"
 	},
 	"devDependencies": {
 		"@astrojs/preact": "^1.1.0",

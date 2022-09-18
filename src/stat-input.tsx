@@ -1,5 +1,7 @@
 import type { Signal } from "@preact/signals"
+import classNames from "classnames"
 import type { ComponentChildren } from "preact"
+import { textInputClass } from "./styles"
 
 export function StatInput({
 	label,
@@ -12,7 +14,8 @@ export function StatInput({
 		<label>
 			<div class="text-sm font-medium mb-2 leading-none">{label}</div>
 			<input
-				class="border-2 border-stone-300 dark:border-stone-500 shadow-inner rounded-md focus:bg-black-30 leading-none w-full p-3 text-center dark:bg-black/20  focus:outline-none focus:border-orange-500 dark:focus:border-orange-500"
+				inputMode="numeric"
+				class={classNames(textInputClass, "text-center appearance-none")}
 				value={valueSignal.value}
 				onInput={(event) => {
 					valueSignal.value = event.currentTarget.value

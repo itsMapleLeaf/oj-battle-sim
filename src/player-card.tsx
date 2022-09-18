@@ -1,6 +1,7 @@
 import { Signal, useComputed } from "@preact/signals"
 import { OptionGroup } from "./option-group"
 import type { Player } from "./player"
+import { PresetCombobox } from "./preset-combobox"
 import { StatInput } from "./stat-input"
 
 export function PlayerCard({
@@ -41,6 +42,14 @@ export function PlayerCard({
 					surviving.
 				</p>
 			</div>
+			<PresetCombobox
+				onChange={(preset) => {
+					player.value.hp.value = String(preset.hp)
+					player.value.atk.value = String(preset.atk)
+					player.value.def.value = String(preset.def)
+					player.value.evd.value = String(preset.evd)
+				}}
+			/>
 		</section>
 	)
 }
