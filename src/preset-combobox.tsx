@@ -1,7 +1,9 @@
-import { offset, useFloating } from "@floating-ui/react-dom"
+import { flip, offset, useFloating } from "@floating-ui/react-dom"
+import { Transition } from "@headlessui/react"
 import classNames from "classnames"
 import { useCombobox } from "downshift"
 import { matchSorter } from "match-sorter"
+import { Fragment } from "preact"
 import { ChevronDown, X } from "preact-feather"
 import { useState } from "preact/hooks"
 import useMeasure from "react-use-measure"
@@ -38,7 +40,7 @@ export function PresetCombobox({
 	const floating = useFloating({
 		placement: "bottom-start",
 		strategy: "fixed",
-		middleware: [offset(8)],
+		middleware: [offset(8), flip()],
 	})
 
 	const [rectRef, rect] = useMeasure()
@@ -89,25 +91,34 @@ export function PresetCombobox({
 						width: rect.width,
 					}}
 				>
-					<ul
-						{...combobox.getMenuProps()}
-						class="bg-white dark:bg-stone-600 shadow-lg rounded-md max-h-96 overflow-y-scroll"
-					>
-						{combobox.isOpen &&
-							items.map((item, index) => (
-								<li
-									key={item}
-									value={item}
-									class={classNames(
-										"py-2 px-3 transition cursor-pointer",
-										combobox.highlightedIndex === index && "bg-orange-500/20",
-									)}
-									{...combobox.getItemProps({ item, index })}
-								>
-									{item}
-								</li>
-							))}
-					</ul>
+					<div {...combobox.getMenuProps()}>
+						<Transition
+							as={Fragment}
+							show={combobox.isOpen}
+							enter="transition ease-out duration-100"
+							enterFrom="transform opacity-0 scale-95"
+							enterTo="transform opacity-100 scale-100"
+							leave="transition ease-in duration-75"
+							leaveFrom="transform opacity-100 scale-100"
+							leaveTo="transform opacity-0 scale-95"
+						>
+							<ul class="bg-white dark:bg-stone-600 shadow-lg rounded-md max-h-72 overflow-y-scroll transition">
+								{items.map((item, index) => (
+									<li
+										key={item}
+										value={item}
+										class={classNames(
+											"py-2 px-3 transition cursor-pointer",
+											combobox.highlightedIndex === index && "bg-orange-500/20",
+										)}
+										{...combobox.getItemProps({ item, index })}
+									>
+										{item}
+									</li>
+								))}
+							</ul>
+						</Transition>
+					</div>
 				</div>
 			</Portal>
 		</>

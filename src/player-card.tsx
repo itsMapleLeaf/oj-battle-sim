@@ -18,6 +18,14 @@ export function PlayerCard({
 	return (
 		<section class="bg-white dark:bg-stone-700 p-4 rounded-md shadow-md grid gap-4">
 			<h2 class="text-lg">{title}</h2>
+			<PresetCombobox
+				onChange={(preset) => {
+					player.value.hp.value = String(preset.hp)
+					player.value.atk.value = String(preset.atk)
+					player.value.def.value = String(preset.def)
+					player.value.evd.value = String(preset.evd)
+				}}
+			/>
 			<div class="grid grid-flow-col auto-cols-fr gap-4">
 				<StatInput label="HP" valueSignal={player.value.hp} />
 				<StatInput label="ATK" valueSignal={player.value.atk} />
@@ -42,14 +50,6 @@ export function PlayerCard({
 					surviving.
 				</p>
 			</div>
-			<PresetCombobox
-				onChange={(preset) => {
-					player.value.hp.value = String(preset.hp)
-					player.value.atk.value = String(preset.atk)
-					player.value.def.value = String(preset.def)
-					player.value.evd.value = String(preset.evd)
-				}}
-			/>
 		</section>
 	)
 }
