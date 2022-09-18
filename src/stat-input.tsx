@@ -20,6 +20,19 @@ export function StatInput({
 				onFocus={(event) => {
 					event.currentTarget.select()
 				}}
+				onKeyDown={(event) => {
+					const numberValue = Number(event.currentTarget.value)
+					if (event.key === "ArrowUp") {
+						valueSignal.value = Number.isFinite(numberValue)
+							? String(numberValue + 1)
+							: "0"
+					}
+					if (event.key === "ArrowDown") {
+						valueSignal.value = Number.isFinite(numberValue)
+							? String(numberValue - 1)
+							: "0"
+					}
+				}}
 			/>
 		</label>
 	)
