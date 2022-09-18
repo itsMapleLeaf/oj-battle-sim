@@ -2,7 +2,7 @@ import { flip, offset, useFloating } from "@floating-ui/react-dom"
 import { Transition } from "@headlessui/react"
 import classNames from "classnames"
 import { useCombobox } from "downshift"
-import { ComponentChildren, Fragment } from "preact"
+import { Fragment } from "preact"
 import { ChevronDown, X } from "preact-feather"
 import { useState } from "preact/hooks"
 import useMeasure from "react-use-measure"
@@ -15,7 +15,7 @@ export function Combobox<T>({
 	onSelectedItemChange,
 }: {
 	getItems: (value: string) => T[]
-	getItemLabel: (item: T) => ComponentChildren
+	getItemLabel: (item: T) => string
 	onSelectedItemChange: (item: T) => void
 }) {
 	const [value, setValue] = useState("")
@@ -23,6 +23,7 @@ export function Combobox<T>({
 
 	const combobox = useCombobox({
 		items: getItems(value),
+		itemToString: (item) => (item == null ? "" : getItemLabel(item)),
 		onInputValueChange: ({ inputValue = "" }) => {
 			setValue(inputValue)
 

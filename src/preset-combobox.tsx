@@ -10,13 +10,12 @@ export function PresetCombobox({
 	onChange: (stats: Preset) => void
 }) {
 	return (
-		<Combobox<string>
-			getItems={(value) => matchSorter(Object.keys(characters), value)}
-			getItemLabel={(item) => item}
-			onSelectedItemChange={(item) => {
-				const preset = characters[item]
-				if (preset) onChange(preset)
-			}}
+		<Combobox<[string, Preset]>
+			getItems={(value) =>
+				matchSorter(Object.entries(characters), value, { keys: ["0"] })
+			}
+			getItemLabel={([name]) => name}
+			onSelectedItemChange={([, preset]) => onChange(preset)}
 		/>
 	)
 }
