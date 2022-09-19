@@ -1,6 +1,8 @@
 ---
 import "@fontsource/rubik/variable.css"
+import ExternalLink from "../external-link.astro"
 import { Simulator } from "../simulator"
+import { linkClass } from "../styles"
 
 const title = "Battle Simulator - 100% Orange Juice"
 const description =
@@ -44,12 +46,29 @@ const description =
 		</script>
 	</head>
 	<body
-		class="flex flex-col min-h-screen bg-gradient-to-b from-orange-100 to-orange-300 dark:from-stone-700 dark:to-stone-900 dark:text-white"
+		class="flex flex-col min-h-screen bg-gradient-to-b from-orange-100 to-orange-300 dark:from-stone-800 dark:to-stone-900 dark:text-white"
 	>
-		<div class="m-auto">
+		<div class="m-auto flex flex-col items-center gap-4 py-20">
 			<!-- this errors when server rendered -->
 			<!-- https://github.com/preactjs/signals/issues/168 -->
-			<Simulator client:only="preact" />
+			<main>
+				<Simulator client:only="preact" />
+			</main>
+			<footer class="flex items-center gap-1.5 text-sm">
+				<ExternalLink
+					href="https://github.com/itsMapleLeaf/oj-battle-sim"
+					class={linkClass}
+				>
+					source
+				</ExternalLink>
+				•
+				<ExternalLink
+					href="https://100orangejuice.fandom.com/wiki/Battle"
+					class={linkClass}
+				>
+					what is this?
+				</ExternalLink>
+			</footer>
 		</div>
 	</body>
 </html>

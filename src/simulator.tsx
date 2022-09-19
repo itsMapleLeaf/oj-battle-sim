@@ -106,27 +106,25 @@ const defenderSurvivalChance = computed(() =>
 
 export function Simulator() {
 	return (
-		<main class="px-4 py-20">
-			<div class="flex flex-col items-center w-full max-w-md mx-auto space-y-4">
-				<PlayerCard
-					title="Attacker"
-					player={attacker}
-					victoryChance={attackerVictoryChance}
-					survivalChance={attackerSurvivalChance}
-				/>
-				<section class="flex items-center gap-4">
-					<SolidButton type="button" title="Swap" onClick={swap}>
-						<Shuffle />
-					</SolidButton>
-					<ThemeButton />
-				</section>
-				<PlayerCard
-					title="Defender"
-					player={defender}
-					victoryChance={defenderVictoryChance}
-					survivalChance={defenderSurvivalChance}
-				/>
-			</div>
-		</main>
+		<div class="flex flex-col items-center w-full max-w-md mx-auto space-y-4">
+			<PlayerCard
+				title="Attacker"
+				player={attacker}
+				victoryChance={attackerVictoryChance}
+				survivalChance={attackerSurvivalChance}
+			/>
+			<section class="flex items-center gap-4">
+				<SolidButton type="button" title="Swap" onClick={swap}>
+					<Shuffle />
+				</SolidButton>
+				<ThemeButton />
+			</section>
+			<PlayerCard
+				title="Defender"
+				player={defender}
+				victoryChance={defenderVictoryChance}
+				survivalChance={defenderSurvivalChance}
+			/>
+		</div>
 	)
 }
