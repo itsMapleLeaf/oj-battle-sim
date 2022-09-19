@@ -3,6 +3,7 @@ module.exports = {
 	semi: false,
 	trailingComma: "all",
 	useTabs: true,
+	htmlWhitespaceSensitivity: "ignore",
 	plugins: [require.resolve("prettier-plugin-astro")],
 	overrides: [
 		{
